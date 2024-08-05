@@ -5,6 +5,15 @@ use App\Http\Controllers\ScraperController;
 use App\Http\Controllers\TrainController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/getTraffic', [MapsController::class, 'getTraffic'])->name('getTraffic');
-Route::get('/getArrDepBoardWithDet', [TrainController::class, 'getArrDepBoardWithDet'])->name('getArrDepBoardWithDet');
+
+Route::controller(MapsController::class)->group(function (){
+    Route::get('/getTraffic','getTraffic')->name('getTraffic');
+});
+
+
+Route::controller(TrainController::class)->group(function(){
+    Route::get('/getArrDepBoardWithDet', 'getArrDepBoardWithDet')->name('getArrDepBoardWithDet');
+});
+
+
 Route::get('/getNews', [ScraperController::class, 'getNews'])->name('getNews');
