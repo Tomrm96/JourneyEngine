@@ -17,3 +17,9 @@ Route::controller(TrainController::class)->group(function(){
 
 
 Route::get('/getNews', [ScraperController::class, 'getNews'])->name('getNews');
+
+
+
+Route::fallback(function(){
+    return 'ERROR';
+});
